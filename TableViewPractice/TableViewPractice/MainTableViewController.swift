@@ -8,9 +8,21 @@
 import UIKit
 
 class MainTableViewController: UITableViewController {
+    var sample = [SampleJSON]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func jsonDecoding() {
+        let jsonDecoder: JSONDecoder = JSONDecoder()
+        guard let dataAssets = NSDataAsset(name: "sample") else { return }
+        
+        do {
+            sample = try jsonDecoder.decode([SampleJSON].self, from: dataAssets.data)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
