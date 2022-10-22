@@ -6,7 +6,7 @@
 //
 
 struct SampleJSON: Decodable {
-    let userID: Int
+    let userId: Int
     let id: Int
     let title: String
     let body: String

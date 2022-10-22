@@ -14,6 +14,7 @@
 		FC18870E2902754B00737ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18870C2902754B00737ABE /* LaunchScreen.storyboard */; };
 		FC188717290275F300737ABE /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC188715290275F300737ABE /* MainTableViewController.swift */; };
 		FC4D79802902C4DB0011C23C /* SampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D797F2902C4DB0011C23C /* SampleJSON.swift */; };
+		FC4D79822902CB730011C23C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D79812902CB730011C23C /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FC18870F2902754B00737ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC188715290275F300737ABE /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		FC4D797F2902C4DB0011C23C /* SampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleJSON.swift; sourceTree = "<group>"; };
+		FC4D79812902CB730011C23C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				FC1887032902754900737ABE /* SceneDelegate.swift */,
 				FC1887072902754900737ABE /* Main.storyboard */,
 				FC188715290275F300737ABE /* MainTableViewController.swift */,
+				FC4D79812902CB730011C23C /* TableViewCell.swift */,
 				FC4D797F2902C4DB0011C23C /* SampleJSON.swift */,
 				FC18870A2902754B00737ABE /* Assets.xcassets */,
 				FC18870C2902754B00737ABE /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4D79822902CB730011C23C /* TableViewCell.swift in Sources */,
 				FC1887022902754900737ABE /* AppDelegate.swift in Sources */,
 				FC188717290275F300737ABE /* MainTableViewController.swift in Sources */,
 				FC1887042902754900737ABE /* SceneDelegate.swift in Sources */,
