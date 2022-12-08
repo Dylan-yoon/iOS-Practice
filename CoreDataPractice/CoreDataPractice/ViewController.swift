@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "Name"
         textField.backgroundColor = .lightGray
+        textField.autocorrectionType = .no
         
         return textField
     }()
@@ -24,8 +25,27 @@ class ViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "Age"
         textField.backgroundColor = .lightGray
+        textField.autocorrectionType = .no
         
         return textField
+    }()
+    
+    let addbutton: UIButton = {
+        let button = UIButton()
+        button.setTitle("ADD", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(.darkGray, for: .normal)
+        
+        return button
+    }()
+    
+    let printbutton: UIButton = {
+        let button = UIButton()
+        button.setTitle("PRINT", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.titleLabel?.textAlignment = .center
+        
+        return button
     }()
     
     let tableView = UITableView()
@@ -39,19 +59,55 @@ class ViewController: UIViewController {
 //        }
         
         view.backgroundColor = .black
+        autoLayout()
         
+    }
+    
+    @objc func tapAddButton() {
+        guard let nameText = nameTextField.text else { return }
+        guard let ageText = ageTextField.text,
+              let ageText = Int(ageText) else { return }
+        
+        let person = PersonInfo(name: nameText, gender: true, age: ageText, uuid: UUID())
+        person.coreDataRegist()
+        print("저장완료")
+    }
+    
+    @objc func tapPrintButton() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do {
+            let person = try context.fetch(Person.fetchRequest()) as! [Person]
+            person.forEach {
+                print($0.name!, $0.gender, $0.age)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+
+extension ViewController {
+    func autoLayout() {
         [
-        nameTextField,
-        ageTextField,
-        tableView
+            nameTextField,
+            ageTextField,
+            addbutton,
+            printbutton,
+            tableView
         ].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .systemGreen
         
+        addbutton.addTarget(self, action: #selector(tapAddButton), for: .touchUpInside)
+        printbutton.addTarget(self, action: #selector(tapPrintButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -62,7 +118,14 @@ class ViewController: UIViewController {
             ageTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             ageTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: ageTextField.bottomAnchor),
+            addbutton.topAnchor.constraint(equalTo: ageTextField.bottomAnchor),
+            addbutton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            printbutton.topAnchor.constraint(equalTo: ageTextField.bottomAnchor),
+            printbutton.leadingAnchor.constraint(equalTo: addbutton.trailingAnchor),
+            printbutton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: addbutton.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
