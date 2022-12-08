@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard container != nil else {
+            fatalError("This view needs a persistent container.")
+        }
+        
+        view.backgroundColor = .black
     }
 }
