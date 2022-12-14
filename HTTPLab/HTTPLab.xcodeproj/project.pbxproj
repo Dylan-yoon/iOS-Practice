@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F6A00DF2294A33A0006F0D88 /* GetProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00DF1294A33A0006F0D88 /* GetProducts.swift */; };
+		F6A00DF6294A3C95006F0D88 /* GetProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00DF5294A3C95006F0D88 /* GetProductDetail.swift */; };
 		FC285ED02949B72800B9B7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC285ECF2949B72800B9B7C5 /* AppDelegate.swift */; };
 		FC285ED22949B72800B9B7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC285ED12949B72800B9B7C5 /* SceneDelegate.swift */; };
 		FC285ED42949B72800B9B7C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC285ED32949B72800B9B7C5 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		F6A00DF1294A33A0006F0D88 /* GetProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProducts.swift; sourceTree = "<group>"; };
+		F6A00DF5294A3C95006F0D88 /* GetProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductDetail.swift; sourceTree = "<group>"; };
 		FC285ECC2949B72800B9B7C5 /* HTTPLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC285ECF2949B72800B9B7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC285ED12949B72800B9B7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				FC285ED32949B72800B9B7C5 /* ViewController.swift */,
 				F6A00DF0294A3353006F0D88 /* HealthChecker */,
 				F6A00DF1294A33A0006F0D88 /* GetProducts.swift */,
+				F6A00DF5294A3C95006F0D88 /* GetProductDetail.swift */,
 				FC285ED52949B72800B9B7C5 /* Main.storyboard */,
 				FC285ED82949B72A00B9B7C5 /* Assets.xcassets */,
 				FC285EDA2949B72A00B9B7C5 /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC285ED42949B72800B9B7C5 /* ViewController.swift in Sources */,
+				F6A00DF6294A3C95006F0D88 /* GetProductDetail.swift in Sources */,
 				F6A00DF2294A33A0006F0D88 /* GetProducts.swift in Sources */,
 				FC285EE42949B7B300B9B7C5 /* HealthChecker.swift in Sources */,
 				FC285ED02949B72800B9B7C5 /* AppDelegate.swift in Sources */,
