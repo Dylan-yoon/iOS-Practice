@@ -13,6 +13,7 @@
 		FC285ED72949B72800B9B7C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC285ED52949B72800B9B7C5 /* Main.storyboard */; };
 		FC285ED92949B72A00B9B7C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC285ED82949B72A00B9B7C5 /* Assets.xcassets */; };
 		FC285EDC2949B72A00B9B7C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC285EDA2949B72A00B9B7C5 /* LaunchScreen.storyboard */; };
+		FC285EE42949B7B300B9B7C5 /* HealthChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC285EE32949B7B300B9B7C5 /* HealthChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FC285ED82949B72A00B9B7C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC285EDB2949B72A00B9B7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC285EDD2949B72A00B9B7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC285EE32949B7B300B9B7C5 /* HealthChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FC285ECF2949B72800B9B7C5 /* AppDelegate.swift */,
 				FC285ED12949B72800B9B7C5 /* SceneDelegate.swift */,
 				FC285ED32949B72800B9B7C5 /* ViewController.swift */,
+				FC285EE32949B7B300B9B7C5 /* HealthChecker.swift */,
 				FC285ED52949B72800B9B7C5 /* Main.storyboard */,
 				FC285ED82949B72A00B9B7C5 /* Assets.xcassets */,
 				FC285EDA2949B72A00B9B7C5 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC285ED42949B72800B9B7C5 /* ViewController.swift in Sources */,
+				FC285EE42949B7B300B9B7C5 /* HealthChecker.swift in Sources */,
 				FC285ED02949B72800B9B7C5 /* AppDelegate.swift in Sources */,
 				FC285ED22949B72800B9B7C5 /* SceneDelegate.swift in Sources */,
 			);
