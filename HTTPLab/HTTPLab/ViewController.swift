@@ -8,11 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let post = PostProduct()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-
-
+    
+    func postData() {
+        post.postData { data in
+            print("E N D")
+            return
+        }
+    }
 }
 

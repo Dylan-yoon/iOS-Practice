@@ -2,7 +2,7 @@
 //  PostProduct.swift
 //  HTTPLab
 //
-//  Created by Byunghee_Yoon on 2022/12/17.
+//  Created by Dylan-Y on 2022/12/17.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ struct PostProduct {
     let urlString = "https://openmarket.yagom-academy.kr/api/products"
     let urlSession = URLSession.shared
     
-    func postData() {
+    func postData(completion: @escaping (Data) -> Void) {
         // Host: example.org
         guard let url = URL(string: urlString) else { return }
         var urlRequest = URLRequest(url: url)
@@ -28,73 +28,71 @@ struct PostProduct {
         urlRequest.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         // Body
-        guard let subak = UIImage(systemName: "subak.png") else {
+        guard let subak = UIImage(named: "subak") else {
             print("이미지없음")
             return
         }
+        print("이미지 있음", subak)
         
-        let body1 = "--\(boundary)"
-        let body2 = "Content-Disposition: form-data; name=\"params\"" +
-        "\r\n" + "Content-Type: application/json"
-        let body3 = ""
-        let body4 = "{ \"name\": \"맛있는 수박 팝니다\", \"description\": \"아따이것참맛잇구마잉!!!\", \"price\": 1000000, \"currency\":  \"USD\", \"discounted_price\":  10000, \"stock\":  10, \"secret\": \"soobak1234\" }"
-        let body5 = "--\(boundary)"
-        let body6 = "Content-Disposition: form-data; name=\"images\""
-        let body7 = "Content-Type: image/png"
-        let body8 = ""
-        guard let body9 = String(data: subak.pngData()! , encoding: .utf8) else {return}
-        let body10 = "--\(boundary)--"
+        var bodyData = Data()
+        let bodySpacing = "\r\n"
+        //Params 시작
+        let body1 = "--\(boundary)" + bodySpacing
+        let body2 = "Content-Disposition: form-data; name=\"params\"" + "\r\n" + "Content-Type: application/json" + bodySpacing
+        let body3 = "" + bodySpacing
+        let body4 = "{\"name\": \"맛있는 수박 팝니다\", \"description\": \"아따이것참맛잇구마잉!!!\", \"price\": 1000000, \"currency\":  \"USD\", \"discounted_price\":  10000, \"stock\":  10, \"secret\": \"soobak1234\" }" + bodySpacing
+        //PARAMS 끝
+        bodyData.append(body1.data(using: .utf8)!)
+        bodyData.append(body2.data(using: .utf8)!)
+        bodyData.append(body3.data(using: .utf8)!)
+        bodyData.append(body4.data(using: .utf8)!)
         
-        let bodys = [body1,
-                     body2,
-                     body3,
-                     body4,
-                     body5,
-                     body6,
-                     body7,
-                     body8,
-                     body9].map {
-            ($0 + "\r\n")
+        //Images 시작
+        let body5 = "--\(boundary)" + bodySpacing
+        let body6 = "Content-Disposition: form-data; name=\"images\"; filename=\"subak.png\"" + bodySpacing
+        let body7 = "Content-Type: image/png" + bodySpacing
+        let body8 = "" + bodySpacing
+        guard let body9 = subak.pngData() else {
+            print("수박이안들어가 ㅠ")
+            return
         }
+        //Images 끝
+        bodyData.append(body5.data(using: .utf8)!)
+        bodyData.append(body6.data(using: .utf8)!)
+        bodyData.append(body7.data(using: .utf8)!)
+        bodyData.append(body8.data(using: .utf8)!)
+        bodyData.append(body9)
+        bodyData.append(bodySpacing.data(using: .utf8)!)
         
-        let body: String = bodys.reduce("") { $0 + $1 } + body10
-        print(body)
+        let bodyEnd = "--\(boundary)--"
+        bodyData.append(bodyEnd.data(using: .utf8)!)
         
-        urlRequest.httpBody = body.data(using: .utf8)
+        urlRequest.httpBody = bodyData
+        print(bodyData)
+        
+        print("dataTask 시작!")
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription
+                )
+            }
+            
+            //에러 코드를 확인하기 위해 guard 분리
+            guard let response = response as? HTTPURLResponse else {
+                return
+            }
+            print(response.statusCode)
+            
+            guard (200..<300).contains(response.statusCode) else {
+                print("응답없음")
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            completion(data)
+        }.resume()
     }
 }
-//            POST /api/products HTTP/1.1
-//            Host: {{host}}
-//            identifier: c5b13912-43b9-11ed-8b9b-0956155ef06a
-//            Content-Length: 444
-//            Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-//
-//            ----WebKitFormBoundary7MA4YWxkTrZu0gW
-//            Content-Disposition: form-data; name="params"
-//            Content-Type: application/json
-//
-//            { "name": "ttt", "description": "t1t1t1", "price": 10000, "currency":  "KRW", "discounted_price":  500, "stock":  1234567, "secret": "soobak1234" }
-//            ----WebKitFormBoundary7MA4YWxkTrZu0gW
-//            Content-Disposition: form-data; name="images"; filename="dark_logo.png"
-//            Content-Type: image/png
-//
-//            (data)
-//            ----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-
-
-
-//
-//        POST /test.html HTTP/1.1
-//        Host: example.org
-//        Content-Type: multipart/form-data;boundary="boundary"  // header
-//
-//        --boundary                                                //body1
-//        Content-Disposition: form-data; name="field1"             //body2
-//                                                                  //body3
-//        value1                                                    //body4
-//        --boundary                                                //body5
-//        Content-Disposition: form-data; name="field2"; filename="example.txt"     //body6
-//                                                                  //body7
-//        value2                                                    //body8
-//        --boundary--                                              //body9
