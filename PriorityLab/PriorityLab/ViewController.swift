@@ -64,9 +64,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         autolayout()
         
+        setPriority()
         printHuggingPriority()
         print()
         printCompressionPriority()
+    }
+    
+    func setPriority() {
+        firstLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//        secondLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
     func autolayout() {
