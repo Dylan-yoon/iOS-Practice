@@ -64,6 +64,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         autolayout()
         
+        printHuggingPriority()
+        print()
+        printCompressionPriority()
     }
     
     func autolayout() {
@@ -75,5 +78,23 @@ class ViewController: UIViewController {
             verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200)
         ])
+    }
+    
+    func printHuggingPriority() {
+        print("HUGGING---------------------------")
+        print("firstLabel : ", firstLabel.contentHuggingPriority(for: .horizontal))
+        print("secondLabel : ", secondLabel.contentHuggingPriority(for: .horizontal))
+        print("thirdLabel : ", thirdLabel.contentHuggingPriority(for: .horizontal))
+        print("topLabel : ", topLabel.contentHuggingPriority(for: .horizontal))
+        print("verticalStackView : ", verticalStackView.contentHuggingPriority(for: .horizontal))
+    }
+    
+    func printCompressionPriority() {
+        print("COMPRESSION-----------------------")
+        print("firstLabel : ", firstLabel.contentCompressionResistancePriority(for: .horizontal))
+        print("secondLabel : ", secondLabel.contentCompressionResistancePriority(for: .horizontal))
+        print("thirdLabel : ", thirdLabel.contentCompressionResistancePriority(for: .horizontal))
+        print("topLabel : ", topLabel.contentCompressionResistancePriority(for: .horizontal))
+        print("verticalStackView : ", verticalStackView.contentCompressionResistancePriority(for: .horizontal))
     }
 }
